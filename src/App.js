@@ -1,22 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./images.jpg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+
+        <div className="main">
+          hi
+          <div className="chat-body d-flex flex-column">
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="name@example.com"
+              />
+              <label
+                for="exampleFormControlInput1"
+                className="footer-content  "
+              >
+                Welcome to Chat Bot!!!!!
+              </label>
+            </div>
+          </div>
+        </div>
       </header>
     </div>
   );

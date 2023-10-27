@@ -1,44 +1,25 @@
-.App {
+/* .App {
   text-align: center;
-  /* background-color: #282c34; */
-}
+} */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-
-
-.App-header {
-  background-color: #ffffff;
-  height: auto;
-  /* display: flex; */
-  flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
-  font-size: calc(10px + 2vmin);
-  color: rgb(12, 0, 0);
-}
-
-.chat-body{
-  /* margin: 10rem; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  background-color: rgb(28, 29, 29);
-  min-Height: 50vh;
-  width: 50rem;
-  border-radius: 50px;
-}
-.footer-content{
+/* .footer-content {
   font-size: 16px;
   color: rgb(235, 230, 230);
   font-weight: 600;
-  /* min-Height: 1000vh;
-  position: relative; */
+} */
+.chat-body {
+  background-color: aliceblue;
+  margin: 5em 30em;
+  padding: 1em;
+  max-height: 500px;
+  overflow-y: auto;
+  border-radius: 20px;
 }
-.send_btn{
-  margin-left: 15px;
+.message-text {
+  font-size: 20px;
+  font-weight: 500;
+}
+.b-icons {
+  font-size: 25px;
+  margin-right: 5px;
 }

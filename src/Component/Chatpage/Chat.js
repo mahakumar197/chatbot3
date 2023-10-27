@@ -1,24 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import Message from "./Message";
+import { analyze } from "./Utils";
 
 export default function Chat() {
+  const [message, setMessage] = useState([
+    {
+      message: "hello may i know your name?",
+    },
+  ]);
+  const [text, setText] = useState("");
+  const handleOnSend = () => {
+    let updatedList = [...message, { message: text, user: true }];
+    if (updatedList.length > 2) {
+      const reply = analyze(text);
+      updatedList = [...updatedList, { message: reply }];
+    } else {
+      updatedList = [
+        ...updatedList,
+        {
+          message: `hi, ${text}`,
+        },
+        {
+          message: "how may I help you?",
+        },
+      ];
+    }
+    setMessage(updatedList);
+    setText("");
+  };
+
+  // setTimeout(() => {
+  //   document.querySelector("").scrollIntoView();
+  // }, 1);
   return (
     <div>
-      <div className="main d-flex align-items-center justify-content-center">
-        <div className="chat-body ">
-          <div class="form-group ">
+      <div className="">
+        <div className="chat-body">
+          {message.length > 0 && message.map((data) => <Message {...data} />)}
+          <div className=" d-flex">
             <input
-              type="email"
-              class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
+              type="text"
+              className="form-control"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
             />
-            <button type="submit" class="btn btn-primary send_btn">
-              Submit
+            <button
+              type="submit"
+              class="btn btn-primary ms-2"
+              onClick={handleOnSend}
+            >
+              Send
             </button>
           </div>
-          <label for="exampleFormControlInput1" className="footer-content  ">
-            Chat Bot!!!!!
-          </label>
+
+          {/* <div className="footer-content">Chat Bot!!!!!</div> */}
         </div>
       </div>
     </div>

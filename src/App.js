@@ -1,16 +1,15 @@
 import React from "react";
-import logo from "./images.jpg";
+import logo from "./6.png";
+import Chat from "./Component/Chatpage/Chat";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "bootstrap";
-import Chat from "./Component/Chatpage/Chat";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        ChatBot
+      <header className="App-header d-flex justify-content-center">
+        {/* <span className="chat-bot-label">ChatBot</span> */}
+        <img src={logo} className="App-logo" alt="logo" />
       </header>
       <Chat />
     </div>

@@ -5,7 +5,7 @@ import { analyze } from "./Utils";
 export default function Chat() {
   const [message, setMessage] = useState([
     {
-      message: "hello may i know your name?",
+      message: "Hello, Welcome to Sword!!! may i know your name?",
     },
   ]);
   const [text, setText] = useState("");
@@ -42,6 +42,7 @@ export default function Chat() {
               type="text"
               className="form-control"
               value={text}
+              // onKeyPress={handleKeyPress}
               onChange={(e) => setText(e.target.value)}
             />
             <button

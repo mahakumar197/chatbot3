@@ -45,9 +45,10 @@
   border-radius: 20px;
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: #6c757d #1a1a1a; /* For Firefox */
-
+  position: sticky;
+  bottom: 0;
   /* For WebKit browsers (Chrome, Safari, Edge) */
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 12px;
   }
 
@@ -59,9 +60,15 @@
   &::-webkit-scrollbar-track {
     background-color: #1a1a1a;
     border-radius: 6px;
-  }
+  } */
 }
-
+/* .footer {
+  /* background-color: #f0f0f0;
+  padding: 10px; 
+  position: sticky;
+  bottom: 0;
+  /* Add any additional styles for the footer here 
+} */
 .message-text {
   font-size: 20px;
   font-weight: 500;

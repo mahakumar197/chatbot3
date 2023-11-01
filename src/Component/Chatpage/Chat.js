@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Message from "./Message";
 import { analyze } from "./Utils";
+import TypingLoader from "./TypingLoader";
+// import TypingLoader from "./TypingLoader"; // Import the TypingLoader component
 
 export default function Chat() {
   const [message, setMessage] = useState([
@@ -9,12 +11,20 @@ export default function Chat() {
     },
   ]);
   const [text, setText] = useState("");
+  const [isBotTyping, setIsBotTyping] = useState(false); // New state variable
   const lastMessageRef = useRef(null);
 
   const handleOnSend = () => {
     let updatedList = [...message, { message: text, user: true }];
     if (updatedList.length > 2) {
+      {
+        isBotTyping && <TypingLoader text="Bot is typing..." speed={100} />;
+      }
+      setIsBotTyping(true);
+      console.log("loader is working");
       const reply = analyze(text);
+      setIsBotTyping(false);
+
       updatedList = [...updatedList, { message: reply }];
     } else {
       updatedList = [
@@ -58,7 +68,9 @@ export default function Chat() {
                 {...data}
               />
             ))}
-          <div className=" d-flex">
+
+          {/* Display typing loader when the bot is typing */}
+          <div className=" d-flex ">
             <input
               type="text"
               className="form-control"

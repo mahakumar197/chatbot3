@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Message from "./Message";
 import { analyze } from "./Utils";
 
 export default function Chat() {
   const [message, setMessage] = useState([
     {
-      message: "Hello, Welcome to Sword!!! may i know your name?",
+      message: "Hello, Welcome to Sword!!! may I know your name?",
     },
   ]);
   const [text, setText] = useState("");
+  const lastMessageRef = useRef(null);
+
   const handleOnSend = () => {
     let updatedList = [...message, { message: text, user: true }];
     if (updatedList.length > 2) {
@@ -27,34 +29,50 @@ export default function Chat() {
     }
     setMessage(updatedList);
     setText("");
+
+    // Scroll to the last message with a timeout to ensure it happens after DOM update
+    setTimeout(() => {
+      scrollToBottom();
+    }, 0);
   };
 
-  // setTimeout(() => {
-  //   document.querySelector("").scrollIntoView();
-  // }, 1);
+  const scrollToBottom = () => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView();
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [message]);
+
   return (
     <div>
       <div className="">
         <div className="chat-body">
-          {message.length > 0 && message.map((data) => <Message {...data} />)}
+          {message.length > 0 &&
+            message.map((data, index) => (
+              <Message
+                key={index}
+                ref={index === message.length - 1 ? lastMessageRef : null}
+                {...data}
+              />
+            ))}
           <div className=" d-flex">
             <input
               type="text"
               className="form-control"
               value={text}
-              // onKeyPress={handleKeyPress}
               onChange={(e) => setText(e.target.value)}
             />
             <button
               type="submit"
-              class="btn btn-primary ms-2"
+              className="btn btn-primary ms-2 sticky-bottom"
               onClick={handleOnSend}
             >
               Send
             </button>
           </div>
-
-          {/* <div className="footer-content">Chat Bot!!!!!</div> */}
         </div>
       </div>
     </div>

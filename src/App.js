@@ -7,10 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div className="App">
-      {/* <TypingLoader /> */}
       <header className="App-header d-flex justify-content-center">
         {/* <span className="chat-bot-label">ChatBot</span> */}
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo mt-5" alt="logo" />
       </header>
 
       <Chat />

@@ -1,89 +1,59 @@
-.App {
-  /* background-color: #66acdd; */
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
-  min-height: 100vh;
-  text-align: center;
-}
-.App-header {
-  padding-top: 100px;
-}
-.chat-bot-label {
-  color: white;
-  font-size: 70px;
-}
-.data {
-  color: white;
-}
-
-.App-logo {
-  border-radius: 25px;
-  height: 65px;
-}
-.App-logo1 {
-  border-radius: 25px;
-  height: 50px;
-}
-/* .chat-body {
-  background-color: rgb(1, 10, 17);
-  margin: 5em 30em;
-  padding: 3em;
-  max-height: 50vh;
-  overflow-y: auto;
-  border-radius: 20px;
-} */
 .chat-body {
   background-color: rgb(1, 10, 17);
-  margin: 5em 30em;
+  margin: 3em 30em;
   padding: 3em;
-  max-height: 50vh;
+  max-height: 650px;
   overflow-y: auto;
   border-radius: 20px;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #6c757d #1a1a1a; /* For Firefox */
-  position: sticky;
-  bottom: 0;
-  /* For WebKit browsers (Chrome, Safari, Edge) */
-  /* &::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #6c757d;
-    border-radius: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #1a1a1a;
-    border-radius: 6px;
-  } */
+  display: flex;
+  flex-direction: column; /* Ensure the container behaves as a vertical column */
 }
-/* .footer {
-  /* background-color: #f0f0f0;
-  padding: 10px; 
-  position: sticky;
-  bottom: 0;
-  /* Add any additional styles for the footer here 
-} */
+
 .message-text {
   font-size: 20px;
   font-weight: 500;
 }
-.b-icons {
-  font-size: 25px;
-  margin-right: 5px;
-}
+
 .message-right {
   background-color: azure;
   border-radius: 25px;
   padding: 10px;
+  align-self: flex-end; /* Push user messages to the right */
 }
+
 .message-left {
   background-color: azure;
   border-radius: 25px;
   padding: 10px;
+  align-self: flex-start; /* Push bot messages to the left */
+}
+.App-logo1,
+.App-logo {
+  border-radius: 25px;
+  height: 65px;
+}
+/* ... (other CSS rules) */
+
+.typing-indicator {
+  display: flex;
+  justify-content: flex-start; /* Adjust as needed */
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+  margin: 5px;
+  animation: typing 1s infinite;
+}
+
+@keyframes typing {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
 }

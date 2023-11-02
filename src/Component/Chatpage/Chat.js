@@ -1,54 +1,46 @@
 import React, { useState, useRef, useEffect } from "react";
 import Message from "./Message";
 import { analyze } from "./Utils";
-import TypingLoader from "./TypingLoader";
-// import TypingLoader from "./TypingLoader"; // Import the TypingLoader component
 
 export default function Chat() {
   const [message, setMessage] = useState([
     {
-      message: "Hello, Welcome to Sword!!! may I know your name?",
+      message:
+        "Welcome to Sword! I'm here to assist you. may I know your name?",
     },
   ]);
   const [text, setText] = useState("");
-  const [isBotTyping, setIsBotTyping] = useState(false); // New state variable
+  const [isBotTyping, setIsBotTyping] = useState(false);
   const lastMessageRef = useRef(null);
 
   const handleOnSend = () => {
     let updatedList = [...message, { message: text, user: true }];
     if (updatedList.length > 2) {
-      {
-        isBotTyping && <TypingLoader text="Bot is typing..." speed={100} />;
-      }
       setIsBotTyping(true);
-      console.log("loader is working");
-      const reply = analyze(text);
-      setIsBotTyping(false);
-
-      updatedList = [...updatedList, { message: reply }];
+      setTimeout(() => {
+        const reply = analyze(text);
+        setIsBotTyping(false);
+        updatedList = [...updatedList, { message: reply }];
+        setMessage(updatedList);
+      }, 2000);
     } else {
       updatedList = [
         ...updatedList,
         {
-          message: `hi, ${text}`,
+          message: `Hi, ${text}`,
         },
         {
-          message: "how may I help you?",
+          message: "Im here to help you?",
         },
       ];
     }
     setMessage(updatedList);
     setText("");
-
-    // Scroll to the last message with a timeout to ensure it happens after DOM update
-    setTimeout(() => {
-      scrollToBottom();
-    }, 0);
   };
 
   const scrollToBottom = () => {
     if (lastMessageRef.current) {
-      lastMessageRef.current.scrollIntoView();
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -58,8 +50,11 @@ export default function Chat() {
 
   return (
     <div>
-      <div className="">
-        <div className="chat-body">
+      <div className="chatt">
+        <div
+          className="chat-body"
+          style={{ overflowY: "auto", maxHeight: "650px" }}
+        >
           {message.length > 0 &&
             message.map((data, index) => (
               <Message
@@ -68,9 +63,17 @@ export default function Chat() {
                 {...data}
               />
             ))}
+          {isBotTyping && (
+            // <div className="message-left">
+            <div className="typing-indicator">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+            // </div>
+          )}
 
-          {/* Display typing loader when the bot is typing */}
-          <div className=" d-flex ">
+          <div className="d-flex mt-3">
             <input
               type="text"
               className="form-control"
@@ -79,12 +82,13 @@ export default function Chat() {
             />
             <button
               type="submit"
-              className="btn btn-primary ms-2 sticky-bottom"
+              className="btn btn-primary ms-2"
               onClick={handleOnSend}
             >
               Send
             </button>
           </div>
+          <div ref={lastMessageRef}></div>
         </div>
       </div>
     </div>

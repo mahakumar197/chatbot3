@@ -30,7 +30,18 @@ export const analyze = (text) => {
     text.includes("thanks") ||
     text.includes("thank")
   ) {
-    return "You're welcome! If you have any more questions or need further assistance, feel free to ask. I'm here to help! 😊";
+    return "Thank you for chatting with me! If you have more questions in the future, feel free to ask. Have a great day!😊";
+  } else if (
+    text.includes("thank you") ||
+    text.includes("thanks") ||
+    text.includes("thank")
+  ) {
+    const response =
+      "You're welcome! If you have any more questions or need further assistance, feel free to ask. I'm here to help! 😊";
+
+    const thankYouGif = "![Thank You GIF](URL_TO_YOUR_GIF)";
+
+    return response + "\n\n" + thankYouGif;
   } else {
     return "I'm sorry, I didn't understand your request. Can you please rephrase it ❓";
   }

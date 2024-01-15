@@ -1,3 +1,28 @@
+ChatBot
+
+"Have you ever chatted with a computer? That's what we'll explore today. Chatbots, or virtual conversation partners, are changing the way we interact with technology. In the next few minutes, we'll dive into the world of chatbots, discovering how they work, what they can do, and how they're shaping our digital experiences."
+
+Sword chatbot
+To assist you, we have a chatbot named Maha. This is primarily for new Joiners who are unfamiliar with our company. As a result, it will provide a broad introduction.
+
+Features 
+Conversational Interface
+24/7 Availability
+Personalization
+Natural Language Processing (NLP): Advanced chatbots use NLP to understand and respond to user input, making interactions more human-like and meaningful.
+Cost Savings
+Quick Responses
+ 
+Technologies
+React JS and bootstrap, CSS,react and its hooks. The technologies we used for the chatbot's front end. I also used git to manage the project's version control. 
+
+
+
+Future Integrations
+
+I intend to add a backend to the chat bot to get the best response for the users' requests utilizing apis and responses.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
